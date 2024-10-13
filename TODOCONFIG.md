@@ -1,0 +1,17 @@
+
+- Lazy DONE
+- Oil DONE
+- Theme (nightfox) DONE
+- Core config DONE
+- Treesitter DONE
+- Telescope/FZF DONE
+- Lualine? DONE
+- Tpope greatness Done
+- LSP
+    - Bare config Done
+    - Mappings Done
+    - CMP Done
+- Formater (Conform) DONE
+- Linter (No recuerdo cual) DOne
+- GithubLink DONE
+- DAP (Opcional) DONE ! Even Deno and Node
