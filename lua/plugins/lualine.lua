@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "nightfox",
+      theme = "kanagawa",
     },
     extensions = {
       "oil",

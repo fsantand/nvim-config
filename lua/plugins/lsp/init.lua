@@ -1,4 +1,4 @@
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = "LSP: " .. desc
@@ -16,8 +16,15 @@ local on_attach = function(_, bufnr)
   nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
   nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
+
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
   vim.keymap.set("i", "<C-S-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
+
+  if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+    nmap('<leader>th', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr })
+    end, '[T]oggle Inlay [H]ints')
+  end
 end
 
 return {
@@ -34,6 +41,11 @@ return {
     lspconfig.lua_ls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        hint = { enable = true },
+      },
     })
 
     lspconfig.denols.setup {
@@ -46,7 +58,31 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = lspconfig.util.root_pattern("package.json"),
-      single_file_support = false
+      single_file_support = false,
+      typescript = {
+        inlayHint = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        }
+      },
+      javascript = {
+        inlayHint = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        }
+      }
     }
   end,
 }

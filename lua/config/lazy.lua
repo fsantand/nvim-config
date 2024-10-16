@@ -38,6 +38,12 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.undofile = true
 vim.o.breakindent = true
 vim.wo.signcolumn = "yes"
+vim.wo.conceallevel = 2
+
+-- folds
+vim.o.foldlevelstart = 1
+vim.o.foldlevel = 99
+vim.o.foldnestmax = 4
 
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
@@ -96,9 +102,9 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     {
-      "EdenEast/nightfox.nvim",
+      "rebelot/kanagawa.nvim",
       config = function()
-        vim.cmd[[colorscheme nightfox]]
+        vim.cmd[[colorscheme kanagawa]]
       end
     },
     { import = "plugins" },
@@ -106,7 +112,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "nightfox" } },
+  install = { colorscheme = { "kanagawa" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })

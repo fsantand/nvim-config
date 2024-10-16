@@ -6,6 +6,8 @@ return {
   config = function()
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
       ensure_installed = {
@@ -21,6 +23,7 @@ return {
         "vim",
         "bash",
         "jsdoc",
+        "query",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

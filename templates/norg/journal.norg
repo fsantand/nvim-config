@@ -1,0 +1,18 @@
+@document.meta
+title: {TODAY_OF_FILENAME}
+description:
+authors: {AUTHOR}
+categories: journal
+created: {TODAY_OF_FILENAME}
+updated: {TODAY_OF_FILENAME}
+version: 1.1.1
+@end
+
+* {TODAY_OF_FILENAME}
+  {{:{YESTERDAY_OF_FILENAME}:}}[Yesterday] - {{:{TOMORROW_OF_FILENAME}:}}[Tomorrow]
+
+  ** Daily Review
+   - {CURSOR}
+
+** Today's Checklist
+   - ( ) Write my daily review
