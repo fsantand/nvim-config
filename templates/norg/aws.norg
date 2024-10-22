@@ -1,0 +1,16 @@
+@document.meta
+title: {TITLE}
+description:
+authors: {AUTHOR}
+categories: [
+  aws
+  notes
+]
+created: {TODAY}
+updated: {TODAY}
+version: 1.0.0
+@end
+
+.toc {TITLE_INPUT}
+
+* {CURSOR}

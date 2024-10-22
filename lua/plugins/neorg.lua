@@ -10,15 +10,18 @@ return {
 		load = {
 			["core.defaults"] = {},
 			["core.concealer"] = {},
+			["core.qol.toc"] = {},
 			["core.export"] = {},
 			["core.presenter"] = { config = {zen_mode = "zen-mode" }},
 			["core.tangle"] = {},
+			["core.summary"] = {},
 			["core.export.markdown"] = {},
 			["core.dirman"] = {
 				config = {
 					workspaces = {
 						notes = "~/notes/notes",
 						work = "~/notes/work",
+						aws = "~/curso/aws",
 					},
 					default_workspace = "notes",
 				},

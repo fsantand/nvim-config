@@ -1,0 +1,29 @@
+@document.meta
+title: {FILENAME}
+description:
+authors: {AUTHOR}
+categories: [
+  summary
+  brag
+]
+created: {TODAY_OF_FILENAME}
+updated: {TODAY_OF_FILENAME}
+version: 1.1.1
+@end
+
+.toc Resumen Semanal
+
+* TODO
+  - ( ) 
+* En curso
+  - ( ) 
+
+* En Revision
+  - ( ) 
+
+* Listo (Mover a journal)
+  - ( ) 
+
+* Fechas importantes
+  - ( ) Fecha
+        {@ Viernes 18 Octubre 2024}

@@ -2,7 +2,6 @@
 title: {TODAY_OF_FILENAME}
 description:
 authors: {AUTHOR}
-categories: journal
 created: {TODAY_OF_FILENAME}
 updated: {TODAY_OF_FILENAME}
 version: 1.1.1
@@ -16,3 +15,4 @@ version: 1.1.1
 
 ** Today's Checklist
    - ( ) Write my daily review
+   - (+) Avanzar curso de AWS
