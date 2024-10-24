@@ -40,11 +40,6 @@ vim.o.breakindent = true
 vim.wo.signcolumn = "yes"
 vim.wo.conceallevel = 2
 
--- folds
-vim.o.foldlevelstart = 1
-vim.o.foldlevel = 99
-vim.o.foldnestmax = 4
-
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 

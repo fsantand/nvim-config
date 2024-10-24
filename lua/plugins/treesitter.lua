@@ -5,9 +5,6 @@ return {
   build = ':TSUpdate',
   config = function()
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
       ensure_installed = {
@@ -30,6 +27,7 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
     }
+    vim.treesitter.language.register('markdown', 'octo')
 
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
