@@ -19,16 +19,26 @@ return {
       telescope_builtins.grep_string({ search = word })
     end
 
+    local find_config_files = function()
+      telescope_builtins.find_files({ cwd = '~/.config/nvim' })
+    end
+
+    local grep_config_files = function()
+      telescope_builtins.live_grep({ cwd = '~/.config/nvim' })
+    end
+
     return {
       { "<leader>pf", telescope_builtins.git_files, { desc = "Find repo files" }},
       { "<leader>pa", telescope_builtins.find_files, { desc = "Find all files" }},
       { "<leader>pd", telescope_builtins.oldfiles, { desc = "Find old files" }},
       { "<leader>ps", telescope_builtins.live_grep, { desc = "Live grep" }},
       { "<leader>po", telescope_builtins.lsp_dynamic_workspace_symbols, { desc = "Find lsp workspace symbols" }},
-      { "<leader>pt", telescope_builtins.buffers, { desc = "Find open buffer" }},
+      { "<leader><leader>", telescope_builtins.buffers, { desc = "Find open buffer" }},
       { "<leader>ph", telescope_builtins.help_tags, { desc = "Find help tags" }},
       { "<leader>pb", telescope_builtins.git_branches, { desc = "Switch branches" }},
       { "<leader>pT", ":Telescope colorscheme enable_preview=true <CR>", { desc = "Switch colorschemes" }},
+      { "<leader>pcf", find_config_files, { desc = "Find files in nvim config" }},
+      { "<leader>pcw", grep_config_files, { desc = "Grep files in nvim config" }},
       { "<leader>pws", find_current_word, { desc = "Find current word in files" }},
     }
   end,
@@ -39,7 +49,7 @@ return {
       vimgrep_arguments = {
         "rg",
         "-L",
-        "--color=never",
+        --"--color=never",
         "--no-heading",
         "--with-filename",
         "--line-number",

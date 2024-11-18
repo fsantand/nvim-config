@@ -59,6 +59,10 @@ vim.opt.splitbelow = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
+
 -- Keymaps and random shit
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -96,6 +100,7 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     -- import your plugins
+    --
     {
       "rebelot/kanagawa.nvim",
       config = function()

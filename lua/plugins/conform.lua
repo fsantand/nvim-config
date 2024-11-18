@@ -1,14 +1,15 @@
 return {
   "stevearc/conform.nvim",
-  event = "LspAttach",
   config = function ()
     local conform = require("conform")
     conform.setup({
       formatters_by_ft = {
         lua = { "stylua" },
         javascript = { "prettier" },
-        typescript = { "prettier" },
+        typescript = { "deno_fmt", "prettier" },
         go = { "gofmt", "goimports", "golines" },
+        json = { "fixjson" },
+        yaml = { "yamlfmt" },
       },
       formatters = {
         prettierd = {
