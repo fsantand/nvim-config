@@ -80,16 +80,12 @@ return {
         }
       },
       javascript = {
-        inlayHint = {
-          includeInlayParameterNameHints = 'all',
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        }
+        compilerOptions = {
+          modules = "commonjs",
+          target = "es6",
+          checkJs = false,
+        },
+        exclude = {'node_modules'},
       }
     }
 
