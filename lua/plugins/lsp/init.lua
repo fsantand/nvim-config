@@ -91,6 +91,28 @@ return {
 
     lspconfig.gopls.setup {
       on_attach = on_attach,
-      capabilities = capabilities, }
+      capabilities = capabilities,
+    }
+
+    lspconfig.rust_analyzer.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        ['rust-analyzer'] = {
+          useLibraryCodeForTypes = true,
+          autoSearchPaths = true,
+          autoImportCompletions = false,
+          reportMissingImports = true,
+          followImportForHints = true,
+
+          cargo = {
+            allFeatures = true,
+          },
+          checkOnSave = {
+            command = "cargo clippy",
+          },
+        },
+      },
+    }
   end,
 }
