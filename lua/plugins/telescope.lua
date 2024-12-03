@@ -58,7 +58,7 @@ return {
       },
       pickers = {
         lsp_dynamic_workspace_symbols = { theme = 'dropdown' },
-        oldfiles = { previewer = false, theme = 'dropdown'},
+        oldfiles = { previewer = false, theme = 'dropdown', cwd_only = true},
         git_files = { previewer = false, theme = 'dropdown'},
         find_files = { previewer = false, theme = 'dropdown'},
         buffers = { previewer = false, theme = 'dropdown'},

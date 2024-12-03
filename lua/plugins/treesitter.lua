@@ -27,6 +27,16 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
     }
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.bruno = {
+      install_info = {
+        url = "~/ts/tree-sitter-bruno", -- local path or git repo
+        files = {"src/parser.c", "src/scanner.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+        generate_requires_npm = true, -- if stand-alone parser without npm dependencies
+        requires_generate_from_grammar = true,
+      },
+      filetype = "bru", -- if filetype does not match the parser name
+    }
     vim.treesitter.language.register('markdown', 'octo')
 
     -- There are additional nvim-treesitter modules that you can use to interact

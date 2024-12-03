@@ -104,18 +104,9 @@ require("lazy").setup({
     {
       "rebelot/kanagawa.nvim",
       config = function()
-        require('kanagawa').setup({
-          transparent = true,
-        })
+        require('kanagawa').setup({})
         vim.cmd[[colorscheme kanagawa]]
       end
-    },
-    {
-      "nyoom-engineering/oxocarbon.nvim",
-      config = function()
-        vim.cmd[[colorscheme oxocarbon]]
-      end,
-      enabled = false,
     },
     { import = "plugins" },
     { import = "plugins.lsp" },
