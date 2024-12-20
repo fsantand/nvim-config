@@ -29,6 +29,7 @@ return {
 
     return {
       { "<leader>pf", telescope_builtins.git_files, { desc = "Find repo files" }},
+      { "<leader>pe", telescope_builtins.git_status, { desc = "Find changed files" }},
       { "<leader>pa", telescope_builtins.find_files, { desc = "Find all files" }},
       { "<leader>pd", telescope_builtins.oldfiles, { desc = "Find old files" }},
       { "<leader>ps", telescope_builtins.live_grep, { desc = "Live grep" }},
@@ -46,22 +47,13 @@ return {
     pcall(require("telescope").load_extension, "fzf")
 
     return {
-      vimgrep_arguments = {
-        "rg",
-        "-L",
-        --"--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case",
-      },
       pickers = {
+        live_grep = { theme = 'ivy' },
         lsp_dynamic_workspace_symbols = { theme = 'dropdown' },
-        oldfiles = { previewer = false, theme = 'dropdown', cwd_only = true},
-        git_files = { previewer = false, theme = 'dropdown'},
-        find_files = { previewer = false, theme = 'dropdown'},
-        buffers = { previewer = false, theme = 'dropdown'},
+        oldfiles = { previewer = false, theme = 'ivy', cwd_only = true},
+        git_files = { previewer = false, theme = 'ivy'},
+        find_files = { previewer = false, theme = 'ivy'},
+        buffers = { previewer = false, theme = 'ivy', },
         help_tags = { theme = 'dropdown'},
       },
       file_sorter = require("telescope.sorters").get_fuzzy_file,

@@ -5,8 +5,8 @@ return {
     conform.setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "prettier" },
-        typescript = { "deno_fmt", "prettier" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd", "deno_fmt", stop_after_first = true},
         go = { "gofmt", "goimports", "golines" },
         json = { "fixjson" },
         yaml = { "yamlfmt" },

@@ -38,7 +38,6 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.undofile = true
 vim.o.breakindent = true
 vim.wo.signcolumn = "yes"
-vim.wo.conceallevel = 2
 
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
@@ -94,7 +93,6 @@ end
 vim.keymap.set("n", "<leader>vd", open_float, { desc = "Open diagnostic" })
 vim.keymap.set("n", "]d", goto_next_diag, { desc = "Diagnostics: Go to next" })
 vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous" })
-
 
 -- Setup lazy.nvim
 require("lazy").setup({

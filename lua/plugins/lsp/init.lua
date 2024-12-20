@@ -31,17 +31,10 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { -- Automatically install LSPs to stdpath for neovim
     { "williamboman/mason.nvim", opts={}, lazy=false },
-    {
-      "folke/neoconf.nvim",
-      cmd = { "Neoconf" },
-      opts = {},
-    },
   },
   config = function(_, opts)
     local lspconfig = require("lspconfig")
     local neoconf = require("neoconf")
-
-    neoconf.setup({})
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -56,11 +49,13 @@ return {
       },
     })
 
+    --[[
     lspconfig.denols.setup {
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = lspconfig.util.root_pattern("deno.json"),
     }
+    ]]--
 
     lspconfig.ts_ls.setup {
       on_attach = on_attach,
