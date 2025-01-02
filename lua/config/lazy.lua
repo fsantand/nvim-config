@@ -59,7 +59,8 @@ vim.opt.splitbelow = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.g.markdown_fenced_languages = {
-  "ts=typescript"
+  "ts=typescript",
+  "typescript=typescript"
 }
 
 -- Keymaps and random shit
@@ -97,20 +98,17 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
-    --
     {
-      "rebelot/kanagawa.nvim",
-      config = function()
-        require('kanagawa').setup({})
-        vim.cmd[[colorscheme kanagawa]]
+      "sample-usr/rakis.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+      config = function(opts)
+        vim.cmd[[colorscheme rakis]]
       end
     },
     { import = "plugins" },
     { import = "plugins.lsp" },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "kanagawa" } },
-  -- automatically check for plugin updates
+  install = { colorscheme = { "rakis" } },
 })
