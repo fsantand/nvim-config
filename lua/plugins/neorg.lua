@@ -2,7 +2,7 @@ return {
 	"nvim-neorg/neorg",
 	dependencies = {
 		{ "pysan3/neorg-templates", dependencies = { "L3MON4D3/LuaSnip" } },
-		"juniorsundar/neorg-extras",
+		--"juniorsundar/neorg-extras",
 		"nvim-telescope/telescope.nvim",
 		"nvim-lua/plenary.nvim",
 	},
@@ -37,7 +37,7 @@ return {
 					strategy = "flat",
 				},
 			},
-			["external.templates"] = {
+			--[[["external.templates"] = {
 				config = {
 					default_subcommand = "load",
 				},
@@ -52,7 +52,7 @@ return {
 				config = {
 					fuzzy_finder = "Telescope",
 				},
-			},
+			},]]--
 		},
 	},
 	keys = {

@@ -99,16 +99,16 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     {
-      "sample-usr/rakis.nvim",
+      "Skardyy/makurai-nvim",
       lazy = false,
       priority = 1000,
       opts = {},
       config = function(opts)
-        vim.cmd[[colorscheme rakis]]
+        vim.cmd[[colorscheme makurai]]
       end
     },
     { import = "plugins" },
     { import = "plugins.lsp" },
   },
-  install = { colorscheme = { "rakis" } },
+  install = { colorscheme = { "sonokai" } },
 })

@@ -24,7 +24,7 @@ return {
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
-      highlight = { enable = true },
+      highlight = { enable = true, disable = {"dockerfile"} },
       indent = { enable = true },
     }
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
