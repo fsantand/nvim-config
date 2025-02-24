@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "auto",
+      theme = "gruvbox-material",
       section_separators = '',
       component_separators = '',
     },
@@ -32,7 +32,7 @@ return {
     winbar = {
       lualine_a = {'filename'},
       lualine_b = {''},
-      lualine_c = {'diagnostics'},
+      lualine_c = {},
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},
