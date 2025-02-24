@@ -99,12 +99,14 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     {
-      "Skardyy/makurai-nvim",
+      "sainnhe/gruvbox-material",
       lazy = false,
       priority = 1000,
       opts = {},
       config = function(opts)
-        vim.cmd[[colorscheme makurai]]
+        vim.g.gruvbox_material_enable_italic = true
+        vim.g.gruvbox_material_background = 'hard'
+        vim.cmd.colorscheme('gruvbox-material')
       end
     },
     { import = "plugins" },
