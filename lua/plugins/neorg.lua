@@ -6,7 +6,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"nvim-lua/plenary.nvim",
 	},
-	config = {
+	opts = {
 		load = {
 			["core.defaults"] = {},
 			["core.concealer"] = {},
