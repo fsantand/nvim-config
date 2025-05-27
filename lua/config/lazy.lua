@@ -73,6 +73,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
+-- Markdown stuff
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
+  pattern = { 'gitcommit', 'markdown'},
+  callback = function ()
+    vim.opt_local.conceallevel = 2
+  end
+})
+
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move to next half page" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move to prev half page" })
