@@ -32,13 +32,18 @@ return {
   keys = {
     {
       "<leader>np",
-      ":ObsidianQuickSwitch<cr>",
-      desc = "Obsidian: Quick Switch",
+      ":ObsidianSearch<cr>",
+      desc = "Obsidian: Search",
     },
     {
       "<leader>no",
       ":ObsidianNew<cr>",
       desc = "Obsidian: New Note",
+    },
+    {
+      "<leader>nf",
+      ":ObsidianTag<cr>",
+      desc = "Obsidian: Search files",
     },
   }
 }
