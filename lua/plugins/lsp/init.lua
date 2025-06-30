@@ -61,7 +61,6 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = lspconfig.util.root_pattern("package.json"),
-      single_file_support = false,
       typescript = {
         inlayHint = {
           includeInlayParameterNameHints = 'all',
@@ -78,9 +77,7 @@ return {
         compilerOptions = {
           modules = "commonjs",
           target = "es6",
-          checkJs = false,
         },
-        exclude = {'node_modules'},
       }
     }
 
