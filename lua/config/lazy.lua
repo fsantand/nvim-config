@@ -108,14 +108,12 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     {
-      "sainnhe/gruvbox-material",
-      lazy = false,
-      priority = 1000,
-      opts = {},
-      config = function(opts)
-        vim.g.gruvbox_material_enable_italic = true
-        vim.g.gruvbox_material_background = 'hard'
-        vim.cmd.colorscheme('gruvbox-material')
+      "vague2k/vague.nvim",
+      config = function()
+        -- NOTE: you do not need to call setup if you don't want to.
+        require("vague").setup({
+          -- optional configuration here
+        })
       end
     },
     { import = "plugins" },
