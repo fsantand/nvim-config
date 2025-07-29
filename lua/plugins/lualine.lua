@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "gruvbox-material",
+      theme = "everforest",
       section_separators = '',
       component_separators = '',
     },
