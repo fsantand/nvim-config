@@ -108,16 +108,16 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     {
-      "vague2k/vague.nvim",
+      "sainnhe/everforest",
+      lazy = false,
+      priority = 1000,
       config = function()
-        -- NOTE: you do not need to call setup if you don't want to.
-        require("vague").setup({
-          -- optional configuration here
-        })
+        vim.g.everforest_enable_italic = true
+        vim.cmd.colorscheme('everforest')
       end
     },
     { import = "plugins" },
     { import = "plugins.lsp" },
   },
-  install = { colorscheme = { "sonokai" } },
+  install = { colorscheme = { "everforest" } },
 })
