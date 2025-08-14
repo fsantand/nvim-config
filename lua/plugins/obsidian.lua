@@ -45,5 +45,10 @@ return {
       ":ObsidianTag<cr>",
       desc = "Obsidian: Search files",
     },
+    {
+      "<leader>nt",
+      ":ObsidianTag in-progress<cr>",
+      desc = "Obsidian: Pending Tasks",
+    },
   }
 }

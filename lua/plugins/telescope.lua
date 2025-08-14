@@ -44,9 +44,9 @@ return {
     end
 
     return {
-      { "<leader>pf", telescope_builtins.git_files, { desc = "Find repo files" } },
+      --{ "<leader>pf", telescope_builtins.git_files, { desc = "Find repo files" } },
       { "<leader>pe", telescope_builtins.git_status, { desc = "Find changed files" } },
-      { "<leader>pa", telescope_builtins.find_files, { desc = "Find all files" } },
+      --{ "<leader>pa", telescope_builtins.find_files, { desc = "Find all files" } },
       { "<leader>pd", telescope_builtins.oldfiles, { desc = "Find old files" } },
       { "<leader>ps", grep_ignore_files, { desc = "Live grep" } },
       { "<leader>po", telescope_builtins.lsp_dynamic_workspace_symbols, { desc = "Find lsp workspace symbols" } },
@@ -54,7 +54,7 @@ return {
       { "<leader>ph", telescope_builtins.help_tags, { desc = "Find help tags" } },
       { "<leader>pb", telescope_builtins.git_branches, { desc = "Switch branches" } },
       { "<leader>pT", ":Telescope colorscheme enable_preview=true <CR>", { desc = "Switch colorschemes" } },
-      { "<leader>pcf", find_config_files, { desc = "Find files in nvim config" } },
+      --{ "<leader>pcf", find_config_files, { desc = "Find files in nvim config" } },
       { "<leader>pcw", grep_config_files, { desc = "Grep files in nvim config" } },
       { "<leader>pws", find_current_word, { desc = "Find current word in files" } },
     }

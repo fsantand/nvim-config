@@ -110,6 +110,25 @@ return {
     lspconfig.pyright.setup {
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off",
+          }
+        }
+      }
+    }
+
+    lspconfig.ruff.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off",
+          }
+        }
+      }
     }
   end,
 }
