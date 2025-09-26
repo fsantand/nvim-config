@@ -31,15 +31,15 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { -- Automatically install LSPs to stdpath for neovim
     { "williamboman/mason.nvim", opts={}, lazy=false },
+    { "saghen/blink.cmp"},
+  },
+  opts = {
+    inlay_hints = { enabled = true },
   },
   config = function(_, opts)
-    local lspconfig = require("lspconfig")
-    local neoconf = require("neoconf")
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls",{
       on_attach = on_attach,
       capabilities = capabilities,
       Lua = {
@@ -49,65 +49,38 @@ return {
       },
     })
 
-    --[[
-    lspconfig.denols.setup {
+    vim.lsp.config("basedpyright", {
       on_attach = on_attach,
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("deno.json"),
-    }
-    ]]--
-
-    lspconfig.ts_ls.setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("package.json"),
-      typescript = {
-        inlayHint = {
-          includeInlayParameterNameHints = 'all',
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        }
+      cmd = { "basedpyright-langserver", "--stdio" },
+      root_markers = {
+        'pyproject.toml',
+        'setup.py',
+        'setup.cfg',
+        'requirements.txt',
+        'Pipfile',
+        'pyrightconfig.json',
+        '.git',
       },
-      javascript = {
-        compilerOptions = {
-          modules = "commonjs",
-          target = "es6",
-        },
-      }
-    }
-
-    lspconfig.gopls.setup {
-      on_attach = on_attach,
       capabilities = capabilities,
-    }
-
-    lspconfig.rust_analyzer.setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
+      inlay_hints = { enabled = true },
       settings = {
-        ['rust-analyzer'] = {
-          useLibraryCodeForTypes = true,
-          autoSearchPaths = true,
-          autoImportCompletions = false,
-          reportMissingImports = true,
-          followImportForHints = true,
+        basedpyright = {
+          analysis = {
+            autoSearcchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = 'openFilesOnly',
+            inlayHints = {
+              variableTypes = true,
+              callArgumentNames = true,
+              functionReturnTypes = true,
+              genericTypes = true,
+            },
+          }
+        }
+      }
+    })
 
-          cargo = {
-            allFeatures = true,
-          },
-          checkOnSave = {
-            command = "cargo clippy",
-          },
-        },
-      },
-    }
-
-    lspconfig.pyright.setup {
+    vim.lsp.config("ruff", {
       on_attach = on_attach,
       capabilities = capabilities,
       settings = {
@@ -117,18 +90,12 @@ return {
           }
         }
       }
-    }
+    })
 
-    lspconfig.ruff.setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = {
-        python = {
-          analysis = {
-            typeCheckingMode = "off",
-          }
-        }
-      }
-    }
+    vim.lsp.enable({
+      "luals",
+      "basedpyright",
+      "ruff",
+    })
   end,
 }

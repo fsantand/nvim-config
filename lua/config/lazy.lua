@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -76,9 +76,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Markdown stuff
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
-  pattern = { 'gitcommit', 'markdown'},
-  callback = function ()
+  pattern = { 'gitcommit', 'markdown' },
+  callback = function()
     vim.opt_local.conceallevel = 2
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  group = vim.api.nvim_create_augroup("csv_stuff", { clear = true }),
+  pattern = { '*.csv' },
+  callback = function()
+    vim.cmd("CsvViewEnable")
+    vim.cmd("RainbowDelim")
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'BufLeave', 'BufWinLeave' }, {
+  group = vim.api.nvim_create_augroup("csv_stuff", { clear = true }),
+  pattern = { '*.csv' },
+  callback = function()
+    vim.cmd("CsvViewDisable")
+    vim.cmd("NoRainbowDelim")
   end
 })
 
@@ -93,11 +111,11 @@ local open_float = function()
 end
 
 local goto_next_diag = function()
-  return vim.diagnostic.goto_next({ border = "rounded" })
+  return vim.diagnostic.jump({ border = "rounded", count = 1, float = true })
 end
 
 local goto_prev_diag = function()
-  return vim.diagnostic.goto_prev({ border = "rounded" })
+  return vim.diagnostic.jump({ border = "rounded", count = -1, float = true })
 end
 
 vim.keymap.set("n", "<leader>vd", open_float, { desc = "Open diagnostic" })
@@ -108,16 +126,41 @@ vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous"
 require("lazy").setup({
   spec = {
     {
-      "sainnhe/everforest",
+      "sainnhe/sonokai",
       lazy = false,
       priority = 1000,
       config = function()
-        vim.g.everforest_enable_italic = true
-        vim.cmd.colorscheme('everforest')
+        vim.g.sonokai_enable_italic = true
+        --vim.cmd.colorscheme('sonokai')
+      end
+    },
+    {
+      "slugbyte/lackluster.nvim",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        --vim.cmd.colorscheme('lackluster-mint')
+      end
+    },
+    {
+      "zenbones-theme/zenbones.nvim",
+      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+      -- In Vim, compat mode is turned on as Lush only works in Neovim.
+      dependencies = "rktjmp/lush.nvim",
+      lazy = false,
+      priority = 1000,
+      -- you can set set configuration options here
+    },
+    {
+      "olimorris/onedarkpro.nvim",
+      priority = 1000, -- Ensure it loads first
+      config = function()
+        vim.cmd.colorscheme('onedark_dark')
       end
     },
     { import = "plugins" },
     { import = "plugins.lsp" },
   },
-  install = { colorscheme = { "everforest" } },
+  install = { colorscheme = { "zenbones" } },
 })

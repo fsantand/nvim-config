@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "everforest",
+      theme = "sonokai",
       section_separators = '',
       component_separators = '',
     },
@@ -15,7 +15,6 @@ return {
       "fugitive",
       "nvim-dap-ui",
       "quickfix",
-      "trouble",
     },
     sections = {
       lualine_a = {'mode'},
