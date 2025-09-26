@@ -13,6 +13,7 @@ local file_ignore_patterns = {
 --UI for searching
 return {
   "nvim-telescope/telescope.nvim",
+  tag="0.1.8",
   cmd = "Telescope",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -63,15 +64,6 @@ return {
     pcall(require("telescope").load_extension, "fzf")
 
     return {
-      pickers = {
-        live_grep = { theme = "ivy" },
-        lsp_dynamic_workspace_symbols = { theme = "dropdown" },
-        oldfiles = { previewer = false, theme = "ivy", cwd_only = true },
-        git_files = { previewer = false, theme = "ivy" },
-        find_files = { previewer = false, theme = "ivy" },
-        buffers = { previewer = false, theme = "ivy" },
-        help_tags = { theme = "dropdown" },
-      },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
       file_ignore_patterns = file_ignore_patterns,
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
