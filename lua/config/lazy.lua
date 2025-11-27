@@ -82,24 +82,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  group = vim.api.nvim_create_augroup("csv_stuff", { clear = true }),
-  pattern = { '*.csv' },
-  callback = function()
-    vim.cmd("CsvViewEnable")
-    vim.cmd("RainbowDelim")
-  end
-})
-
-vim.api.nvim_create_autocmd({ 'BufLeave', 'BufWinLeave' }, {
-  group = vim.api.nvim_create_augroup("csv_stuff", { clear = true }),
-  pattern = { '*.csv' },
-  callback = function()
-    vim.cmd("CsvViewDisable")
-    vim.cmd("NoRainbowDelim")
-  end
-})
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move to next half page" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move to prev half page" })

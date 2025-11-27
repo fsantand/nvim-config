@@ -2,6 +2,7 @@ return {
   "j-hui/fidget.nvim",
   tag = "v1.2.0",
   event = "LspAttach",
+  enabled = false,
   opts = {
     progress = {
       poll_rate = 100,              -- How and when to poll for progress messages

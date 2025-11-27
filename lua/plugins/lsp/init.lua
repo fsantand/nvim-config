@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
 
 
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  vim.keymap.set("i", "<C-S-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
+  vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
 
   if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
     nmap('<leader>th', function()
