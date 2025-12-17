@@ -58,6 +58,7 @@ return {
       --{ "<leader>pcf", find_config_files, { desc = "Find files in nvim config" } },
       { "<leader>pcw", grep_config_files, { desc = "Grep files in nvim config" } },
       { "<leader>pws", find_current_word, { desc = "Find current word in files" } },
+      { "<leader>so", telescope_builtins.lsp_document_symbols, { desc = "Treesitter symbols" } },
     }
   end,
   opts = function()

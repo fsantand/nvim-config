@@ -133,12 +133,15 @@ require("lazy").setup({
       lazy = false,
       priority = 1000,
       -- you can set set configuration options here
+      config = function()
+        vim.cmd.colorscheme('zenbones')
+      end
     },
     {
       "olimorris/onedarkpro.nvim",
       priority = 1000, -- Ensure it loads first
       config = function()
-        vim.cmd.colorscheme('onedark_dark')
+        --vim.cmd.colorscheme('onedark_dark')
       end
     },
     { import = "plugins" },

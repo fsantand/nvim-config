@@ -5,7 +5,6 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "sonokai",
       section_separators = '',
       component_separators = '',
     },
