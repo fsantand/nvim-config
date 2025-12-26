@@ -134,7 +134,8 @@ require("lazy").setup({
       priority = 1000,
       -- you can set set configuration options here
       config = function()
-        vim.cmd.colorscheme('zenbones')
+        vim.g.rosebones_italic_strings = false
+        vim.cmd.colorscheme('rosebones')
       end
     },
     {
