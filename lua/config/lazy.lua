@@ -117,32 +117,25 @@ require("lazy").setup({
       end
     },
     {
-      "slugbyte/lackluster.nvim",
-      lazy = false,
-      priority = 1000,
-      config = function()
-        --vim.cmd.colorscheme('lackluster-mint')
-      end
-    },
-    {
-      "zenbones-theme/zenbones.nvim",
-      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-      -- In Vim, compat mode is turned on as Lush only works in Neovim.
-      dependencies = "rktjmp/lush.nvim",
-      lazy = false,
-      priority = 1000,
-      -- you can set set configuration options here
-      config = function()
-        vim.g.rosebones_italic_strings = false
-        vim.cmd.colorscheme('rosebones')
-      end
-    },
-    {
       "olimorris/onedarkpro.nvim",
       priority = 1000, -- Ensure it loads first
       config = function()
         --vim.cmd.colorscheme('onedark_dark')
+      end
+    },
+    {
+      "MartelleV/kaimandres.nvim",
+      config = function()
+        require('kaimandres').setup({})
+        vim.api.nvim_create_autocmd("ColorScheme", {
+          pattern = "kaimandres",
+          callback = function()
+            -- Remove annoying darker blocks in Lualine (if this happens to you)
+            vim.api.nvim_set_hl(0, "StatusLine", { bg = "#16161e" })
+          end,
+        })
+
+        vim.cmd.colorscheme('kaimandres')
       end
     },
     { import = "plugins" },
