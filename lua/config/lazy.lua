@@ -73,15 +73,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
--- Markdown stuff
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
-  pattern = { 'gitcommit', 'markdown' },
-  callback = function()
-    vim.opt_local.conceallevel = 2
-  end
-})
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move to next half page" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move to prev half page" })
@@ -103,6 +94,7 @@ end
 vim.keymap.set("n", "<leader>vd", open_float, { desc = "Open diagnostic" })
 vim.keymap.set("n", "]d", goto_next_diag, { desc = "Diagnostics: Go to next" })
 vim.keymap.set("n", "[d", goto_prev_diag, { desc = "Diagnostics: Go to previous" })
+vim.keymap.set("n", "<leader>mp", "<cmd>!inlyne % &<cr>", { desc = "Diagnostics: Go to previous" })
 
 -- Setup lazy.nvim
 require("lazy").setup({
