@@ -63,6 +63,14 @@ vim.g.markdown_fenced_languages = {
   "typescript=typescript"
 }
 
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = '*.mdc',
+  callback = function()
+    vim.opt_local.filetype = "markdown"
+  end
+})
+
+
 -- Keymaps and random shit
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
