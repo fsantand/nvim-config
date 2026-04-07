@@ -10,6 +10,7 @@ return {
         go = { "gofmt", "goimports", "golines" },
         json = { "fixjson" },
         yaml = { "yamlfmt" },
+        python = { "ruff_format" }
       },
       formatters = {
         prettierd = {

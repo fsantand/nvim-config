@@ -154,8 +154,8 @@ return {
 					envFile = "${workspaceFolder}/env/test/.${workspaceFolderBasename}.env",
 				},
 				{
-					type = 'pwa-node',
-					request = 'launch',
+					type = "pwa-node",
+					request = "launch",
 					name = "Launch file (Deno)",
 					runtimeExecutable = "deno",
 					runtimeArgs = {
