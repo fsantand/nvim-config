@@ -1,34 +1,10 @@
-return {
-  "dmtrKovalenko/fff.nvim",
-  build = function()
-    require('fff.download').download_or_build_binary()
-  end,
-  -- or if you are using nixos
-  -- build = "nix run .#release",
-  opts = {
-    -- pass here all the options
-  },
-  keys = {
-    {
-      "<leader>pf",                 -- try it if you didn't it is a banger keybinding for a picker
-      function()
-        require("fff").find_in_git_root() -- or find_in_git_root() if you only want git files
-      end,
-      desc = "FFF: Find git files",
-    },
-    {
-      "<leader>pa",                 -- try it if you didn't it is a banger keybinding for a picker
-      function()
-        require("fff").find_files() -- or find_in_git_root() if you only want git files
-      end,
-      desc = "FFF: Find all files",
-    },
-    {
-      "<leader>pcf",                 -- try it if you didn't it is a banger keybinding for a picker
-      function()
-        require("fff").find_files_in_dir('~/.config/nvim/') -- or find_in_git_root() if you only want git files
-      end,
-      desc = "FFF: Find all files",
-    }
-  },
-}
+-- NOTE: fff.nvim requires a pre-built binary. With vim.pack the build step is
+-- not run automatically. Run it manually once:
+--   :lua require('fff.download').download_or_build_binary()
+local fff = require("fff")
+
+vim.keymap.set("n", "<leader>pf", function() fff.find_in_git_root() end, { desc = "FFF: Find git files" })
+vim.keymap.set("n", "<leader>pa", function() fff.find_files() end,         { desc = "FFF: Find all files" })
+vim.keymap.set("n", "<leader>pcf", function()
+  fff.find_files_in_dir("~/.config/nvim/")
+end, { desc = "FFF: Find nvim config files" })
