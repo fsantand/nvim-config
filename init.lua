@@ -61,10 +61,6 @@ vim.pack.add({
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/jay-babu/mason-nvim-dap.nvim",
   "https://github.com/leoluz/nvim-dap-go",
-
-  -- AI
-  "https://github.com/github/copilot.vim",
-  "https://github.com/greggh/claude-code.nvim",
 })
 
 -- Simple setups (no dedicated config file needed)
@@ -88,4 +84,3 @@ require("plugins.conform")
 require("plugins.nvim-lint")
 require("plugins.nvim-dap")
 require("plugins.fff")
-require("plugins.claude")
