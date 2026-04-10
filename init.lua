@@ -68,7 +68,10 @@ vim.pack.add({
   "https://github.com/leoluz/nvim-dap-go",
 
   -- DB
-  "https://github.com/kndndrj/nvim-dbee"
+  "https://github.com/kndndrj/nvim-dbee",
+
+  -- Copilot
+  "https://github.com/fang2hou/blink-copilot",
 })
 
 -- Simple setups (no dedicated config file needed)
@@ -81,6 +84,7 @@ require("bqf").setup()
 require("plugins.colorscheme")
 require("plugins.lazydev")
 require("plugins.lsp")
+require("plugins.blink")
 require("plugins.treesitter")
 require("plugins.ui")
 require("plugins.oil")
