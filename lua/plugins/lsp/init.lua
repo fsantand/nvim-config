@@ -1,4 +1,4 @@
-vim.cmd [[set completeopt+=menuone,noselect,popup]]
+vim.cmd [[set completeopt+=menu,menuone,nearest,fuzzy,noinsert,noselect,popup]]
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -20,26 +20,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local function toggle_inlay_hints()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end
-
-local function toggle_codelens()
-  vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
-end
-
-vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
-vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, { desc = "LSP: Rename" })
-vim.keymap.set("n", "<leader>th", toggle_inlay_hints, { desc = "LSP: Accept inline completion" })
-vim.keymap.set("n", "<leader>tcl", toggle_codelens, { desc = "LSP: Accept inline completion" })
-vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP: Show signature" })
-vim.keymap.set("i", "<C-l><C-y>", vim.lsp.inline_completion.get, { desc = "LSP: Accept inline completion" })
-vim.keymap.set("i", "<C-l><C-n>", vim.lsp.inline_completion.select, { desc = "LSP: Accept inline completion" })
-
 vim.lsp.inline_completion.enable()
 
 vim.lsp.config('*', {
   root_markers = { '.git' },
+  capabilities = require("blink.cmp").get_lsp_capabilities({
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  }, true),
 })
 
 -- Lua
@@ -56,10 +47,6 @@ vim.lsp.config('lua_ls', {
   -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
   settings = {
     Lua = {
-      codelens = {
-        enable = true,
-        run = true,
-      },
       runtime = {
         version = 'LuaJIT',
       }
@@ -77,8 +64,9 @@ vim.lsp.config("basedpyright", {
     basedpyright = {
       analysis = {
         autoSearchPaths = true,
+        typeCheckingMode = "strict",
         useLibraryCodeForTypes = true,
-        diagnosticMode = "openFilesOnly",
+        diagnosticMode = "workspace",
         autoImportCompletions = true,
         inlayHints = {
           variableTypes = true,
@@ -92,7 +80,7 @@ vim.lsp.config("basedpyright", {
 })
 
 vim.lsp.enable({
+  "copilot",
   "lua_ls",
   "basedpyright",
-  "copilot",
 })

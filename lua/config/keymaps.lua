@@ -21,3 +21,20 @@ end, { desc = "Diagnostics: Go to next" })
 vim.keymap.set("n", "[d", function()
   vim.diagnostic.jump({ border = "rounded", count = -1, float = true })
 end, { desc = "Diagnostics: Go to previous" })
+
+-- lsp
+local function toggle_inlay_hints()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end
+
+local function toggle_codelens()
+  vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+end
+
+vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
+vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+vim.keymap.set("n", "<leader>th", toggle_inlay_hints, { desc = "LSP: Accept inline completion" })
+vim.keymap.set("n", "<leader>tcl", toggle_codelens, { desc = "LSP: Accept inline completion" })
+vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP: Show signature" })
+vim.keymap.set("i", "<C-l><C-y>", vim.lsp.inline_completion.get, { desc = "LSP: Accept inline completion" })
+vim.keymap.set("i", "<C-l><C-n>", vim.lsp.inline_completion.select, { desc = "LSP: Accept inline completion" })

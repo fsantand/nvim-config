@@ -9,6 +9,7 @@ vim.pack.add({
   "https://github.com/MunifTanjim/nui.nvim",
   "https://github.com/echasnovski/mini.icons",
   "https://github.com/nvim-neotest/nvim-nio",
+  "https://github.com/rafamadriz/friendly-snippets",
 
   -- Colorschemes
   "https://github.com/sainnhe/sonokai",
@@ -20,6 +21,10 @@ vim.pack.add({
   "https://github.com/levouh/tint.nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/folke/todo-comments.nvim",
+  {
+    src = "https://github.com/Saghen/blink.cmp",
+    version = "v1",
+  },
 
   -- File navigation
   "https://github.com/stevearc/oil.nvim",
@@ -61,6 +66,9 @@ vim.pack.add({
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/jay-babu/mason-nvim-dap.nvim",
   "https://github.com/leoluz/nvim-dap-go",
+
+  -- DB
+  "https://github.com/kndndrj/nvim-dbee"
 })
 
 -- Simple setups (no dedicated config file needed)
@@ -84,3 +92,4 @@ require("plugins.conform")
 require("plugins.nvim-lint")
 require("plugins.nvim-dap")
 require("plugins.fff")
+require("plugins.db")

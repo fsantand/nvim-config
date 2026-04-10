@@ -3,7 +3,6 @@ vim.g.maplocalleader = "\\ "
 
 vim.o.mouse = ""
 vim.o.termguicolors = true
-vim.o.completeopt = "menu,menuone,noinsert,popup"
 vim.o.undofile = true
 vim.o.breakindent = true
 vim.o.ignorecase = true
