@@ -1,22 +1,3 @@
-vim.cmd [[set completeopt+=menu,menuone,nearest,fuzzy,noinsert,noselect,popup]]
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('my.lsp', {}),
-  callback = function(ev)
-    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = ev.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
-    end
-  end,
-})
-
 vim.lsp.config('*', {
   root_markers = { '.git' },
   capabilities = require("blink.cmp").get_lsp_capabilities({
@@ -74,15 +55,11 @@ vim.lsp.config("basedpyright", {
   },
 })
 
-vim.lsp.config("typescript-language-server", {
-  cmd = { "typescript-language-server", "--stdio" },
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "vue" },
-  root_markers = { "package.json", "tsconfig.json", ".git" },
-})
-
 vim.lsp.enable({
   "copilot",
   "lua_ls",
   "basedpyright",
   "typescript-language-server",
 })
+
+require("plugins.lsp.typescript")
