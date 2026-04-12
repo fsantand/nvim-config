@@ -9,7 +9,7 @@ require("lualine").setup({
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "diff", "diagnostics" },
-    lualine_c = {},
+    lualine_c = { "filename" },
     lualine_x = {},
     lualine_y = { "location" },
     lualine_z = { "branch" },
@@ -17,22 +17,6 @@ require("lualine").setup({
   inactive_sections = {
     lualine_c = {},
     lualine_x = {},
-  },
-  winbar = {
-    lualine_a = { "filename" },
-    lualine_b = { "" },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = { "filename" },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
   },
 })
 

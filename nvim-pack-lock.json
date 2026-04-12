@@ -33,6 +33,10 @@
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
     },
+    "dropbar.nvim": {
+      "rev": "ce202248134e3949aac375fd66c28e5207785b10",
+      "src": "https://github.com/Bekaboo/dropbar.nvim"
+    },
     "fff.nvim": {
       "rev": "cd0efe50d3ba524cd828b561f6a7f073cf95657c",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"

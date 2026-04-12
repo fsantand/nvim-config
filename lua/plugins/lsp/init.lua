@@ -74,8 +74,15 @@ vim.lsp.config("basedpyright", {
   },
 })
 
+vim.lsp.config("typescript-language-server", {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "vue" },
+  root_markers = { "package.json", "tsconfig.json", ".git" },
+})
+
 vim.lsp.enable({
   "copilot",
   "lua_ls",
   "basedpyright",
+  "typescript-language-server",
 })

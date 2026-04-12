@@ -25,6 +25,7 @@ vim.pack.add({
     src = "https://github.com/Saghen/blink.cmp",
     version = "v1",
   },
+  "https://github.com/Bekaboo/dropbar.nvim",
 
   -- File navigation
   "https://github.com/stevearc/oil.nvim",
@@ -97,3 +98,4 @@ require("plugins.nvim-lint")
 require("plugins.nvim-dap")
 require("plugins.fff")
 require("plugins.db")
+require("plugins.dropbar")
