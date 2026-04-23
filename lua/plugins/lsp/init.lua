@@ -1,3 +1,13 @@
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+        -- Inlay hints display inferred types, etc.
+        if client:supports_method("inlayHint/resolve") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+        end
+    end,
+})
+
 vim.lsp.config('*', {
   root_markers = { '.git' },
   capabilities = require("blink.cmp").get_lsp_capabilities({
@@ -63,3 +73,4 @@ vim.lsp.enable({
 })
 
 require("plugins.lsp.typescript")
+require("plugins.lsp.rust")

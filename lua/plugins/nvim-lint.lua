@@ -6,7 +6,7 @@ lint.linters_by_ft = {
   json       = { "jsonlint" },
 }
 
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function()
     lint.try_lint()
   end,
