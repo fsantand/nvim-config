@@ -15,6 +15,11 @@ vim.pack.add({
   "https://github.com/sainnhe/sonokai",
   "https://github.com/olimorris/onedarkpro.nvim",
   "https://github.com/MartelleV/kaimandres.nvim",
+  "https://github.com/kepano/flexoki-neovim",
+  "https://github.com/ellisonleao/gruvbox.nvim",
+  "https://github.com/vague-theme/vague.nvim",
+  "https://github.com/Mofiqul/dracula.nvim",
+
 
   -- UI
   "https://github.com/nvim-lualine/lualine.nvim",

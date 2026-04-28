@@ -9,6 +9,7 @@ conform.setup({
     json       = { "fixjson" },
     yaml       = { "yamlfmt" },
     python     = { "ruff_format" },
+    sql        = { "sleek" },
   },
   formatters = {
     prettierd = {
