@@ -1,6 +1,9 @@
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("vim._core.ui2").enable({
+  enable=true,
+})
 
 -- Install and load all plugins via the built-in vim.pack (nvim 0.12+)
 vim.pack.add({
