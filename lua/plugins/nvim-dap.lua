@@ -63,6 +63,106 @@ dap.adapters["pwa-node"] = {
   },
 }
 
+-- Python adapter (local via `uv run`, or attach to a remote debugpy server)
+dap.adapters.python = function(cb, config)
+  if config.request == "attach" then
+    local connect = config.connect or config
+    cb({
+      type = "server",
+      host = connect.host or "127.0.0.1",
+      port = assert(tonumber(connect.port), "`connect.port` is required"),
+      options = { source_filetype = "python" },
+    })
+  else
+    cb({
+      type = "executable",
+      command = "uvx",
+      args = { "--from", "debugpy", "python", "-m", "debugpy.adapter" },
+      options = { source_filetype = "python" },
+    })
+  end
+end
+
+local function uv_python_path()
+  local cwd = vim.fn.getcwd()
+  local venv = cwd .. "/.venv/bin/python"
+  if vim.fn.executable(venv) == 1 then
+    return venv
+  end
+  return "python"
+end
+
+dap.configurations.python = {
+  {
+    type = "python",
+    request = "launch",
+    name = "Launch file (uv)",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+    console = "integratedTerminal",
+    justMyCode = false,
+    pythonPath = uv_python_path,
+  },
+  {
+    type = "python",
+    request = "launch",
+    name = "Launch file with arguments (uv)",
+    program = "${file}",
+    args = function()
+      local raw = vim.fn.input("Args: ")
+      return vim.split(raw, "%s+", { trimempty = true })
+    end,
+    cwd = "${workspaceFolder}",
+    console = "integratedTerminal",
+    justMyCode = false,
+    pythonPath = uv_python_path,
+  },
+  {
+    type = "python",
+    request = "launch",
+    name = "Pytest: current file (uv)",
+    module = "pytest",
+    args = { "${file}", "-s" },
+    cwd = "${workspaceFolder}",
+    console = "integratedTerminal",
+    justMyCode = false,
+    pythonPath = uv_python_path,
+  },
+  {
+    type = "python",
+    request = "attach",
+    name = "Attach: Docker Compose (127.0.0.1:5678 -> /app)",
+    connect = { host = "127.0.0.1", port = 5678 },
+    pathMappings = {
+      { localRoot = "${workspaceFolder}", remoteRoot = "/app" },
+    },
+    justMyCode = false,
+  },
+  {
+    type = "python",
+    request = "attach",
+    name = "Attach: Docker Compose (custom host/port/path)",
+    connect = function()
+      local host = vim.fn.input("Host [127.0.0.1]: ")
+      local port = vim.fn.input("Port [5678]: ")
+      return {
+        host = host ~= "" and host or "127.0.0.1",
+        port = tonumber(port ~= "" and port or "5678"),
+      }
+    end,
+    pathMappings = function()
+      local remote = vim.fn.input("Container path [/app]: ")
+      return {
+        {
+          localRoot = "${workspaceFolder}",
+          remoteRoot = remote ~= "" and remote or "/app",
+        },
+      }
+    end,
+    justMyCode = false,
+  },
+}
+
 for _, lang in ipairs({ "typescript", "javascript" }) do
   dap.configurations[lang] = {
     {

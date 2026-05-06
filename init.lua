@@ -2,7 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 require("vim._core.ui2").enable({
-  enable=true,
+  enable=true
 })
 
 -- Install and load all plugins via the built-in vim.pack (nvim 0.12+)
@@ -34,6 +34,7 @@ vim.pack.add({
     version = "v1",
   },
   "https://github.com/Bekaboo/dropbar.nvim",
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
 
   -- File navigation
   "https://github.com/stevearc/oil.nvim",
@@ -88,6 +89,7 @@ require("mason").setup()
 require("neoconf").setup()
 require("mini.icons").setup()
 require("bqf").setup()
+require("render-markdown").setup({})
 
 -- Plugin configs (order matters: lazydev before lsp)
 require("plugins.colorscheme")
