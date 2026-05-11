@@ -10,6 +10,7 @@ conform.setup({
     yaml       = { "yamlfmt" },
     python     = { "ruff_format" },
     sql        = { "sleek" },
+    rust       = { "rustfmt" },
   },
   formatters = {
     prettierd = {

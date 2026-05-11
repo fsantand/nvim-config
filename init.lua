@@ -1,3 +1,6 @@
+require("vim._core.ui2").enable({
+  enable = true
+})
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
@@ -47,6 +50,7 @@ vim.pack.add({
   "https://github.com/williamboman/mason.nvim",
   "https://github.com/folke/neoconf.nvim",
   "https://github.com/folke/lazydev.nvim",
+  "https://github.com/mrcjkb/rustaceanvim",
 
   -- Snippets
   "https://github.com/L3MON4D3/LuaSnip",
