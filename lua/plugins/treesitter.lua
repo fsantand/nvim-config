@@ -6,7 +6,7 @@
 local parsers = {
   "bash", "c", "cpp", "go", "javascript", "jsdoc",
   "lua", "python", "query", "tsx", "typescript",
-  "vim", "vimdoc",
+  "vim", "vimdoc", "gdscript", "godot_resource", "gdshader"
 }
 
 -- Install parsers that aren't present yet (idempotent)

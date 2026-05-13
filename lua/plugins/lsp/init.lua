@@ -74,3 +74,4 @@ vim.lsp.enable({
 
 require("plugins.lsp.typescript")
 require("plugins.lsp.rust")
+require("plugins.lsp.godot")
