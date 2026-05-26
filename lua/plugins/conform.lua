@@ -11,6 +11,7 @@ conform.setup({
     python     = { "ruff_format" },
     sql        = { "sleek" },
     rust       = { "rustfmt" },
+    gdscript = {"gdformat"},
   },
   formatters = {
     prettierd = {
