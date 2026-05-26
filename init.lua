@@ -25,6 +25,8 @@ vim.pack.add({
   "https://github.com/ellisonleao/gruvbox.nvim",
   "https://github.com/vague-theme/vague.nvim",
   "https://github.com/Mofiqul/dracula.nvim",
+  "https://github.com/NTBBloodbath/doom-one.nvim" ,
+  "https://github.com/0x-ximon/acario.nvim",
 
 
   -- UI
@@ -60,7 +62,6 @@ vim.pack.add({
 
   -- Git
   "https://github.com/lewis6991/gitsigns.nvim",
-  "https://github.com/sindrets/diffview.nvim",
   "https://github.com/vincent178/nvim-github-linker",
 
   -- Editing

@@ -21,7 +21,7 @@ require("lualine").setup({
 })
 
 -- tint (dim inactive windows)
-require("tint").setup({ tint = -40 })
+require("tint").setup({ tint = -20 })
 
 -- which-key
 require("which-key").setup()
