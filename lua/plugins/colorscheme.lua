@@ -5,4 +5,4 @@ require("gruvbox").setup({})
 require("vague").setup({})
 require("dracula").setup({})
 
-vim.cmd.colorscheme("acario_dark")
+vim.cmd.colorscheme("gruvbox")
