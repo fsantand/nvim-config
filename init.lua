@@ -1,6 +1,3 @@
-require("vim._core.ui2").enable({
-  enable = true
-})
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
